@@ -1,0 +1,87 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    name: Rust and adapter contracts
+    runs-on: ubuntu-latest
+    container: fedora:44
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install toolchain
+        run: >-
+          dnf install -y cargo rust rustfmt clippy gcc dbus-daemon
+          nodejs npm gtk4-devel libadwaita-devel glib2-devel
+      - run: npm ci
+      - run: cargo fmt --all -- --check
+      - run: cargo clippy --workspace --all-targets --all-features -- -D warnings
+      - run: cargo test --workspace --all-targets
+      - run: dbus-run-session -- cargo test -p prismatic-service --test dbus_contract
+      - run: dbus-run-session -- cargo test -p prismatic-settings --test client_contract
+      - run: npm run lint
+      - run: npm test
+
+  native-packages:
+    name: Native package validation
+    runs-on: ubuntu-latest
+    container: fedora:44
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install native validation tools
+        run: >-
+          dnf install -y cargo rust gcc meson ninja-build just zip
+          gtk4-devel libadwaita-devel glib2-devel appstream desktop-file-utils
+          nodejs npm gjs plasma-workspace-devel libplasma-devel
+          qt6-qtdeclarative-devel
+      - run: npm ci
+      - run: scripts/check-spdx.sh
+      # The application ID intentionally preserves the GitHub account's case as part of
+      # the published D-Bus/API contract; AppStream reports that as a pedantic notice.
+      - run: appstreamcli validate data/io.github.CoJoA13.Prismatic.metainfo.xml
+      - run: desktop-file-validate data/io.github.CoJoA13.Prismatic.desktop
+      - run: just package-gnome
+      - run: just package-plasma
+      - name: Validate Plasma metadata and QML
+        run: |
+          kpackagetool6 --appstream-metainfo adapters/plasma
+          kpackagetool6 --appstream-metainfo adapters/plasma/layout-template
+          prismatic_qmllint=$(command -v qmllint-qt6 || command -v qmllint)
+          test -n "$prismatic_qmllint"
+          "$prismatic_qmllint" -I /usr/lib64/qt6/qml adapters/plasma/contents/ui/main.qml adapters/plasma/contents/ui/TaskButton.qml
+      - run: just configure
+      - run: just build
+      - run: just verify-install
+
+  fedora-mock:
+    name: Fedora 44 mock (${{ matrix.arch }})
+    runs-on: ubuntu-latest
+    container:
+      image: fedora:44
+      options: --privileged
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x86_64, aarch64]
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install mock source tooling
+        run: dnf install -y cargo git mock rsync xz
+      - run: scripts/ci-vendor-source.sh 0.1.0
+      - name: Build source RPM
+        run: >-
+          mock -r fedora-44-${{ matrix.arch }} --isolation=simple
+          --buildsrpm --spec packaging/fedora/prismatic.spec --sources dist
+          --resultdir result
+      - name: Build binary RPMs
+        run: >-
+          mock -r fedora-44-${{ matrix.arch }} --isolation=simple
+          --rebuild result/prismatic-0.1.0-1.fc44.src.rpm --resultdir result

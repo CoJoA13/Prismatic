@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+apps/prismatic-settings/src/main.rs
+adapters/gnome/dock.js
+adapters/plasma/contents/ui/main.qml
+adapters/plasma/contents/ui/TaskButton.qml
+data/io.github.CoJoA13.Prismatic.desktop
+data/io.github.CoJoA13.Prismatic.metainfo.xml

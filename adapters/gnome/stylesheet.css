@@ -1,0 +1,51 @@
+.prismatic-dock {
+  background-color: rgba(32, 32, 36, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 16px;
+  spacing: 8px;
+}
+
+.prismatic-dock.vertical {
+  padding: 16px 8px;
+}
+
+.prismatic-dock.light {
+  color: rgba(20, 20, 22, 1);
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+.prismatic-dock.dark {
+  color: rgba(255, 255, 255, 1);
+}
+
+.prismatic-content {
+  spacing: 8px;
+}
+
+.prismatic-app-button {
+  border-radius: 12px;
+  padding: 0;
+}
+
+.prismatic-app-button:focus,
+.prismatic-app-button:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.prismatic-running-indicator {
+  background-color: -st-accent-color;
+  border-radius: 3px;
+  min-width: 6px;
+  min-height: 6px;
+}
+
+.prismatic-divider {
+  background-color: rgba(255, 255, 255, 0.22);
+  min-width: 1px;
+  min-height: 1px;
+  margin: 8px 2px;
+}
+
+.prismatic-edge-trigger {
+  background-color: transparent;
+}

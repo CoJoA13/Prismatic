@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+[D-BUS Service]
+Name=io.github.CoJoA13.Prismatic.Service
+Exec=@libexecdir@/prismatic-service
+SystemdService=prismatic-service.service

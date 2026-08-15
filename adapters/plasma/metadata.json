@@ -1,0 +1,16 @@
+{
+  "KPackageStructure": "Plasma/Applet",
+  "KPlugin": {
+    "Id": "io.github.CoJoA13.Prismatic",
+    "Name": "Prismatic Dock",
+    "Description": "Native Plasma adapter for the Prismatic dock",
+    "Icon": "view-grid-symbolic",
+    "Category": "Windows and Tasks",
+    "License": "GPL-3.0-or-later",
+    "Version": "0.1.0",
+    "Website": "https://github.com/CoJoA13/Prismatic",
+    "Authors": [{"Name": "Prismatic contributors"}]
+  },
+  "X-Plasma-API-Minimum-Version": "6.0",
+  "X-Plasma-Provides": ["org.kde.plasma.multitasking"]
+}

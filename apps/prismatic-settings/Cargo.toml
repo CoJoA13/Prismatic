@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[package]
+name = "prismatic-settings"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[features]
+default = []
+ui = ["dep:libadwaita"]
+
+[dependencies]
+prismatic-core = { path = "../../crates/prismatic-core" }
+libadwaita = { workspace = true, optional = true }
+serde_json.workspace = true
+thiserror.workspace = true
+zbus.workspace = true
+
+[dev-dependencies]
+prismatic-service = { path = "../../crates/prismatic-service" }
+tempfile.workspace = true
+tokio.workspace = true
+
+[[bin]]
+name = "prismatic-settings"
+path = "src/main.rs"
+required-features = ["ui"]

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "seeded": true,
+  "favorites": [],
+  "display": {"mode": "primary", "connectorByAdapter": {}},
+  "geometry": {
+    "edge": "bottom",
+    "lengthMode": "fit",
+    "customLengthPercent": 60,
+    "alignment": "center",
+    "iconSize": 48
+  },
+  "behavior": {
+    "visibility": "dodge",
+    "revealDelayMs": 160,
+    "hideDelayMs": 300,
+    "shortcut": "<Super><Alt>d"
+  },
+  "appearance": {
+    "colorScheme": "system",
+    "accent": {"mode": "custom", "color": "red"},
+    "opacityPercent": 88,
+    "cornerRadius": 16
+  }
+}

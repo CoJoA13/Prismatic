@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<component type="desktop-application">
+  <id>io.github.CoJoA13.Prismatic</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Prismatic</name>
+  <summary>A native dock for Fedora GNOME and Plasma</summary>
+  <description>
+    <p>
+      Prismatic provides a focused application dock for Fedora 44 Wayland sessions.
+      A shared configuration service drives native GNOME Shell and Plasma adapters.
+    </p>
+    <p>
+      Configure placement, sizing, alignment, visibility, appearance, application
+      favorites, and adapter activation from a GTK 4 and libadwaita settings app.
+    </p>
+  </description>
+  <launchable type="desktop-id">io.github.CoJoA13.Prismatic.desktop</launchable>
+  <developer id="io.github.cojoa13">
+    <name>Prismatic contributors</name>
+  </developer>
+  <url type="homepage">https://github.com/CoJoA13/Prismatic</url>
+  <url type="bugtracker">https://github.com/CoJoA13/Prismatic/issues</url>
+  <url type="help">https://github.com/CoJoA13/Prismatic/blob/main/docs/user-guide.md</url>
+  <content_rating type="oars-1.1"/>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </supports>
+  <recommends>
+    <display_length compare="ge">768</display_length>
+  </recommends>
+  <releases>
+    <release version="0.1.0" date="2026-08-14" type="development">
+      <description>
+        <p>Initial Fedora 44 foundation with shared service and native desktop adapters.</p>
+      </description>
+    </release>
+  </releases>
+</component>

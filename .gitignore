@@ -1,0 +1,10 @@
+/target/
+/build/
+/build-local/
+/dist/
+/result/
+node_modules/
+/.cache/
+*.rpm
+*.src.rpm
+*.tar.xz

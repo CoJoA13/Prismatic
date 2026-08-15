@@ -1,0 +1,11 @@
+{
+  "valid": ["valid-default.json"],
+  "invalid": [
+    "invalid-icon-size.json",
+    "invalid-schema.json",
+    "invalid-favorite.json",
+    "invalid-shortcut.json",
+    "invalid-accent.json",
+    "invalid-connector.json"
+  ]
+}

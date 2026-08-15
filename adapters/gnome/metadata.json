@@ -1,0 +1,9 @@
+{
+  "uuid": "prismatic@cojoa13.github.io",
+  "name": "Prismatic Dock",
+  "description": "A native adaptive dock backed by the Prismatic shared service",
+  "shell-version": ["50"],
+  "settings-schema": "org.gnome.shell.extensions.prismatic",
+  "url": "https://github.com/CoJoA13/Prismatic",
+  "version": 1
+}

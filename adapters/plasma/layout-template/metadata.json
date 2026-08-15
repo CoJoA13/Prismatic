@@ -1,0 +1,13 @@
+{
+  "KPackageStructure": "Plasma/LayoutTemplate",
+  "KPlugin": {
+    "Id": "io.github.CoJoA13.Prismatic.Dock",
+    "Name": "Prismatic Dock",
+    "Description": "A centered adaptive panel containing Prismatic",
+    "Icon": "view-grid-symbolic",
+    "License": "GPL-3.0-or-later",
+    "Version": "0.1.0",
+    "Website": "https://github.com/CoJoA13/Prismatic"
+  },
+  "X-Plasma-ContainmentCategories": ["panel"]
+}

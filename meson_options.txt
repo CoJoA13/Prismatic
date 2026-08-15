@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+option('fedora_target', type: 'string', value: '44', description: 'Supported Fedora release')
+option('build_settings', type: 'boolean', value: true, description: 'Build the GTK settings application')

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<schemalist>
+  <schema id="org.gnome.shell.extensions.prismatic" path="/org/gnome/shell/extensions/prismatic/">
+    <key name="reveal-shortcut" type="as">
+      <default>['&lt;Super&gt;&lt;Alt&gt;d']</default>
+      <summary>Reveal and focus the dock</summary>
+    </key>
+  </schema>
+</schemalist>

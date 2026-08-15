@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+name: Release source
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    container: fedora:44
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - run: dnf install -y cargo git xz
+      - name: Build reproducible vendored source archive
+        run: scripts/source-release.sh "${GITHUB_REF_NAME#v}"
+      - name: Publish checksummed source release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          generate_release_notes: true
+          files: |
+            dist/Prismatic-*-vendor.tar.xz
+            dist/Prismatic-*-vendor.tar.xz.sha256

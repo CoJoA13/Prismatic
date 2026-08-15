@@ -1,0 +1,40 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+name: Bug report
+description: Report reproducible behavior on Fedora 44 Wayland
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not report security issues here; use the private process in SECURITY.md.
+  - type: dropdown
+    id: desktop
+    attributes:
+      label: Desktop
+      options: [GNOME Shell 50.x, Plasma 6.6, Plasma 6.7]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Prismatic version or commit
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Relevant diagnostics
+      description: Remove personal data before pasting journal output.

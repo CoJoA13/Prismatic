@@ -1,0 +1,12 @@
+{
+  "name": "prismatic-desktop-adapters",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test adapters/gnome/tests/*.test.js adapters/plasma/tests/*.test.js",
+    "lint": "eslint adapters/gnome/**/*.js adapters/plasma/**/*.js"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.0"
+  }
+}
