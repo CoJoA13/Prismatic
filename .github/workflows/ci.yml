@@ -63,14 +63,18 @@ jobs:
 
   fedora-mock:
     name: Fedora 44 mock (${{ matrix.arch }})
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     container:
       image: fedora:44
       options: --privileged
     strategy:
       fail-fast: false
       matrix:
-        arch: [x86_64, aarch64]
+        include:
+          - arch: x86_64
+            runner: ubuntu-latest
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v5
       - name: Install mock source tooling
